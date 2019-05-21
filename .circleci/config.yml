@@ -77,7 +77,7 @@ jobs:
       - run: |
           for pkg in $(go list ./... | grep -v github.com/hashicorp/consul/agent/proxyprocess | circleci tests split --split-by=timings --timings-type=classname | tr '\n' ' '); do
             reportname=$(echo $pkg | cut -d '/' -f3- | sed "s#/#_#g")
-            gotestsum --format=short-verbose --junitfile $TEST_RESULTS_DIR/$reportname.xml -- -p 2 -tags=$GOTAGS $pkg
+            gotestsum --format=short-verbose --junitfile $TEST_RESULTS_DIR/$reportname.xml -- -tags=$GOTAGS $pkg
           done
 
       - store_test_results:
