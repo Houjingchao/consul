@@ -433,13 +433,13 @@ workflows:
   #     - build-amd64: *require-go-fmt-vet
   #     - build-arm-arm64: *require-go-fmt-vet
   test-integrations:
-    triggers:
-      - schedule:
-          cron: "0,10,20,30,40,50 * * * *"
-          filters:
-            branches:
-              only:
-                - /^bug\/flaky-test-.*$/ # only run go tests on bug/flaky-test-* for now since we are fixing tests
+    # triggers:
+    #   - schedule:
+    #       cron: "0,10,20,30,40,50 * * * *"
+    #       filters:
+    #         branches:
+    #           only:
+    #             - /^bug\/flaky-test-.*$/ # only run go tests on bug/flaky-test-* for now since we are fixing tests
     jobs:
       - dev-build
       - go-test: &go-test
